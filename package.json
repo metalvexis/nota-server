@@ -1,0 +1,25 @@
+{
+  "name": "nota-server",
+  "version": "1.0.0",
+  "description": "Simple Node.Js note-taking service",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tsc",
+    "start": "npm run build && node .dist/index.js"
+  },
+  "keywords": [
+    "ts",
+    "js",
+    "node"
+  ],
+  "author": "James Saballegue",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.15.0"
+  },
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.2",
+    "@types/koa": "^2.14.0",
+    "typescript": "^5.3.3"
+  }
+}
