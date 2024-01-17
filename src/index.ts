@@ -3,7 +3,7 @@ import koaBody from "koa-body";
 import { mwCatchAllError } from "./catch-all-error";
 import router from "./routes";
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 const app = new koa();
 
