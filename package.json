@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "build": "npx tsc",
-    "start": "npm run build && node .dist/index.js"
+    "start": "node .dist/index.js"
   },
   "keywords": [
     "ts",
-    "js",
+    "js", 
     "node"
   ],
   "author": "James Saballegue",
