@@ -33,15 +33,15 @@ DELETE http://localhost:3000/nota_54e8ab60a9d009c09896fbf8de09185ef6035116c2a32e
 
 ### Test Railway deployment
 
-GET http://nota-server-production.up.railway.app:3000/nota_8fc118f53557eca7
+GET nota-server-production.up.railway.app
 
 
 ####
-POST http://nota-server-production.up.railway.app:3000
+POST nota-server-production.up.railway.app
 content-type: application/json
 
 {
-  "userId": "user-502",
+  "userId": "user-200",
   "title": "My first note",
-  "body": "hello, guys"
+  "body": "hello, guys!"
 }

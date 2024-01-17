@@ -12,7 +12,7 @@ Simple Node.Js Note-taking Service
 
 1. Node v20 or higher
 
-# Usage
+# Local deployment
 
 1. Install dependencies
 
@@ -30,6 +30,23 @@ npm start
 
 ```bash
 curl http://localhost:3000/
+```
+
+# Use API deployed in Railway.app
+
+```bash
+# Get all notes
+curl https://nota-server-production.up.railway.app \
+-H "Accept: application/json"
+```
+
+```bash
+# Create a note
+curl https://nota-server-production.up.railway.app \
+-X POST \
+-H "content-type: application/json" \
+-H "accept:application/json" \
+-d '{"userId": "user-001","title": "My curl note","body": "new note added using curl"}'
 ```
 
 # API Endpoints
