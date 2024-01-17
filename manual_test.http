@@ -1,2 +1,17 @@
 GET http://localhost:3000/
 
+### Test 404
+GET http://localhost:3000/xxx
+
+
+### Test Create Note
+POST http://localhost:3000/
+content-type: application/json
+
+{
+  "userId": "user-999",
+  "title": "My first note",
+  "body": "hello, guys"
+}
+
+
