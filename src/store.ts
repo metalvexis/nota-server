@@ -1,4 +1,4 @@
-import type { INoteSource, INote, ICreateNote } from "./types";
+import type { INoteSource, INote, ICreateNote, IUpdateNote } from "./types";
 
 import crypto from "crypto";
 
@@ -29,12 +29,13 @@ export class NoteStore {
     }
     const hashableNoteString = hashableNote.toString();
 
-    // Create a unique id based on the note data
-    const hashedNote = crypto
-      .createHash("md5")
-      .update(hashableNoteString)
-      .digest("hex");
-    const noteId = NOTEID_PREFIX + hashedNote;
+    // Create a id based on random integer using sha-256 hashing
+    const noteIdSuffix = crypto
+      .createHash("sha256")
+      .update(crypto.randomBytes(16))
+      .digest("hex")
+      .substring(0, 16);
+    const noteId = NOTEID_PREFIX + noteIdSuffix;
 
     const storedNote: INote = {
       noteId,
@@ -63,8 +64,25 @@ export class NoteStore {
     return allNotes;
   }
 
-  public async updateNote(note: INote): Promise<INote> {
-    return this.createNote(note);
+  public async updateNote(
+    id: string,
+    note: IUpdateNote
+  ): Promise<INote | null> {
+    this.NoteSource.set(id, {
+      ...note,
+      noteId: id,
+    });
+    const updatedNote = this.NoteSource.get(id) || null;
+
+    if (updatedNote) {
+      console.log("updatedNote", updatedNote);
+      return {
+        ...updatedNote,
+        noteId: id,
+      };
+    }
+
+    return updatedNote;
   }
 
   public async deleteNote(id: string): Promise<void> {

@@ -23,4 +23,4 @@ export type INoteSource = {
 // We may need to add more fields to this interface
 export type ICreateNote = Omit<INote, "noteId">;
 
-export type IUpdateNote = Partial<INote>;
+export type IUpdateNote = Omit<INote, "noteId">;

@@ -9,15 +9,12 @@ import {
 
 const router = new Router();
 
-router.get("/", getAllNotes);
-
-router.get("/:id", getNoteById);
-
-router.post("/", createNote);
-
-router.put("/", updateNote);
-
-router.delete("/:id", deleteNote);
+router
+  .get("/", getAllNotes)
+  .get("/:id", getNoteById)
+  .post("/", createNote)
+  .put("/:id", updateNote)
+  .delete("/:id", deleteNote);
 
 // router.use((ctx) => ctx.status === 404 && (ctx.message = "Nota API Not Found"));
 
