@@ -4,7 +4,7 @@
   "description": "Simple Node.Js note-taking service",
   "main": "index.js",
   "scripts": {
-    "build": "npx tsc",
+    "build": "npx rimraf .dist && npx tsc",
     "start": "node .dist/index.js"
   },
   "keywords": [
@@ -23,6 +23,7 @@
     "@tsconfig/node20": "^20.1.2",
     "@types/koa": "^2.14.0",
     "@types/koa-joi-router": "^8.0.7",
+    "rimraf": "^5.0.5",
     "typescript": "^5.3.3"
   },
   "nodemonConfig": {
