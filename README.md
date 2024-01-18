@@ -84,11 +84,9 @@ Example Body
 
 ```json
 {
-  "note": {
-    "userId": "user-0000",
-    "title": "Read list",
-    "body": "Do Androids Dream of Electric Sheep?"
-  }
+  "userId": "user-0000",
+  "title": "Read list",
+  "body": "Do Androids Dream of Electric Sheep?"
 }
 ```
 
@@ -207,11 +205,9 @@ Example Body
 
 ```json
 {
-  "note": {
-    "userId": "user-0000",
-    "title": "Read list",
-    "body": "Do Androids Dream of Electric Sheep?"
-  }
+  "userId": "user-0000",
+  "title": "Read list",
+  "body": "Do Androids Dream of Electric Sheep?"
 }
 ```
 
