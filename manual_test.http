@@ -2,32 +2,35 @@
 GET http://localhost:3000/
 
 ### Test get note by id 
-GET http://localhost:3000/nota_8fc118f53557eca7
+GET http://localhost:3000/nota_3d265a18bd07bba9
 
 ### Test Create Note
 POST http://localhost:3000/
 content-type: application/json
 
 {
-  "userId": "user-502",
-  "title": "My first note",
-  "body": "hello, guys"
+  "title": "GGG",
+  "body": "GGG"
 }
 
 
 ### Test Update a note
-PUT http://localhost:3000/nota_8fc118f53557eca7 HTTP/1.1
+PUT http://localhost:3000/nota_3d265a18bd07bba9 HTTP/1.1
 content-type: application/json
 
 {
-  "userId": "user-500",
-  "title": "My first note",
-  "body": "hello, guys again"
+  "userId": "user-250",
+  "title": "G Na",
+  "body": ""
 }
 
 
 ### Test Delete a note
-DELETE http://localhost:3000/nota_54e8ab60a9d009c09896fbf8de09185ef6035116c2a32e09d996fea63a699d83
+DELETE http://localhost:3000/nota_3d265a18bd07bba9
+
+
+### Test 404
+GET http://localhost:3000/api/test
 
 
 

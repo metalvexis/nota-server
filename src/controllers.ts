@@ -5,9 +5,6 @@ import { NoteStore } from "./store";
 
 export const createNote = async (ctx: koa.Context, next: koa.Next) => {
   const body = ctx.request.body as ICreateNote;
-  if (!body.title || !body.body) {
-    throw new GenericNoteError(400, "Missing title or body");
-  }
   const storedNote = await NoteStore.getInstance().createNote(body);
 
   ctx.status = 200;
@@ -23,11 +20,10 @@ export const getAllNotes = async (ctx: koa.Context, next: koa.Next) => {
 };
 
 export const getNoteById = async (ctx: koa.Context, next: koa.Next) => {
-  const id = ctx.path.split("/")[1] || "";
-  if (!id) {
-    throw new GenericNoteError(400, "Missing note id");
+  if (!ctx.params.noteId) {
+    throw new GenericNoteError(400, "Missing required parameter");
   }
-  const matchedNote = await NoteStore.getInstance().getNote(id);
+  const matchedNote = await NoteStore.getInstance().getNote(ctx.params.noteId);
 
   if (!matchedNote) {
     throw new GenericNoteError(404, "Note not found");
@@ -38,34 +34,34 @@ export const getNoteById = async (ctx: koa.Context, next: koa.Next) => {
 };
 
 export const updateNote = async (ctx: koa.Context, next: koa.Next) => {
-  const id = ctx.path.split("/")[1] || "";
+  if (!ctx.params.noteId) {
+    throw new GenericNoteError(400, "Missing required parameter");
+  }
 
-  const matchedNote = await NoteStore.getInstance().getNote(id);
+  const matchedNote = await NoteStore.getInstance().getNote(ctx.params.noteId);
   if (!matchedNote) {
     throw new GenericNoteError(404, "Note not found");
   }
 
   const body = ctx.request.body as IUpdateNote;
-  if (!body.title && !body.body) {
-    throw new GenericNoteError(400, "Missing title or body");
-  }
   const updateData = {
     ...body,
-    noteId: id,
+    noteId: ctx.params.noteId,
   };
 
-  const storedNote = await NoteStore.getInstance().updateNote(id, updateData);
+  const storedNote = await NoteStore.getInstance().updateNote(
+    ctx.params.noteId,
+    updateData
+  );
 
   ctx.status = 200;
   ctx.body = storedNote;
 };
 
 export const deleteNote = async (ctx: koa.Context, next: koa.Next) => {
-  try {
-    const id = ctx.path.split("/")[1] || "";
-    await NoteStore.getInstance().deleteNote(id);
-  } catch (error) {
-    throw error;
+  if (!ctx.params.noteId) {
+    throw new GenericNoteError(400, "Missing required parameter");
   }
+  await NoteStore.getInstance().deleteNote(ctx.params.noteId);
   ctx.status = 200;
 };

@@ -1,4 +1,4 @@
-import type { INoteSource, INote, ICreateNote, IUpdateNote } from "./types";
+import type { INote, ICreateNote, IUpdateNote } from "./types";
 
 import crypto from "crypto";
 

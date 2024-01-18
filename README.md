@@ -4,9 +4,12 @@ Simple Node.Js Note-taking Service
 
 # Assumptions
 
-1. Notes are small pieces of text or a short paragraph that should not exceed 256 characters.
-2. The service does not keep track who owns each note.
-3. You should provide a userId when creating a note if you need to track ownership.
+1. Notes are small pieces of text or a short paragraph that should not exceed 256 characters
+2. Notes must have a title & not exceed 256 characters
+3. Notes body can be blank & not exceed 256 characters
+4. Users can delete existing note body but keep note
+5. The service does not keep track who owns each note
+6. You should provide a userId when creating a note if you need to track ownership
 
 # Requirements:
 

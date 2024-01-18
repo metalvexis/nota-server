@@ -2,6 +2,7 @@ import koa from "koa";
 import koaBody from "koa-body";
 import { mwCatchAllError } from "./catch-all-error";
 import router from "./routes";
+import joiRouter from "./joi-routes";
 
 const PORT = process.env.PORT || 3000;
 
@@ -15,8 +16,7 @@ app.use(
 
 app.use(mwCatchAllError);
 
-app.use(router.routes());
-app.use(router.allowedMethods());
+app.use(joiRouter.middleware());
 
 console.log(`Server running on port ${PORT}`);
 app.listen(PORT);

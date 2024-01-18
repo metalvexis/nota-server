@@ -11,3 +11,15 @@ export async function mwCatchAllError(ctx: koa.Context, next: koa.Next) {
     }
   }
 }
+
+export async function mwCatchAllJoiError(ctx: koa.Context, next: koa.Next) {
+  if (ctx.invalid) {
+    const errs: [string, string][] = [];
+    for (const key of Object.keys(ctx.invalid)) {
+      errs.push([key, `${ctx.invalid[key]}`]);
+    }
+
+    throw new GenericNoteError(400, JSON.stringify(errs));
+  }
+  await next();
+}
