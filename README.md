@@ -15,7 +15,7 @@ Simple Node.Js Note-taking Service
 
 ```bash
 # Get all notes
-curl https://nota-server-production.up.railway.app \
+curl https://nota-server-production.up.railway.app/notes \
 -H "Accept: application/json"
 ```
 
