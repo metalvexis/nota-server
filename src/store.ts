@@ -1,6 +1,6 @@
 import type { INote, ICreateNote, IUpdateNote } from "./types";
 
-import crypto from "crypto";
+import { createHash, randomBytes } from "crypto";
 
 const NOTEID_PREFIX = "nota_";
 
@@ -30,9 +30,8 @@ export class NoteStore {
     const hashableNoteString = hashableNote.toString();
 
     // Create a id based on random integer using sha-256 hashing
-    const noteIdSuffix = crypto
-      .createHash("sha256")
-      .update(crypto.randomBytes(16))
+    const noteIdSuffix = createHash("sha256")
+      .update(randomBytes(16))
       .digest("hex")
       .substring(0, 16);
     const noteId = NOTEID_PREFIX + noteIdSuffix;
