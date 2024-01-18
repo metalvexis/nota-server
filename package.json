@@ -15,7 +15,6 @@
   "author": "James Saballegue",
   "license": "ISC",
   "dependencies": {
-    "@koa/router": "^12.0.1",
     "koa": "^2.15.0",
     "koa-body": "^6.0.1",
     "koa-joi-router": "^8.0.0"
@@ -23,14 +22,18 @@
   "devDependencies": {
     "@tsconfig/node20": "^20.1.2",
     "@types/koa": "^2.14.0",
-    "@types/koa__router": "^12.0.4",
     "@types/koa-joi-router": "^8.0.7",
     "typescript": "^5.3.3"
   },
   "nodemonConfig": {
-    "watch": ["src"],
+    "watch": [
+      "src"
+    ],
     "ext": "*.ts",
-    "ignore": ["**/test/**", "**/docs/**"],
+    "ignore": [
+      "**/test/**",
+      "**/docs/**"
+    ],
     "delay": 2500,
     "exec": "npm run build && npm start"
   }
