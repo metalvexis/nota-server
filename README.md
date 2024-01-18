@@ -11,11 +11,30 @@ Simple Node.Js Note-taking Service
 5. The service does not keep track who owns each note
 6. You should provide a userId when creating a note if you need to track ownership
 
-# Requirements:
+# Use API deployed in Railway.app
+
+```bash
+# Get all notes
+curl https://nota-server-production.up.railway.app \
+-H "Accept: application/json"
+```
+
+```bash
+# Create a note
+curl https://nota-server-production.up.railway.app \
+-X POST \
+-H "content-type: application/json" \
+-H "accept:application/json" \
+-d '{"userId": "user-001","title": "My curl note","body": "new note added using curl"}'
+```
+
+# or Use locally deployed server
+
+## Requirements:
 
 1. Node v20 or higher
 
-# Local deployment
+## Steps:
 
 1. Install dependencies
 
@@ -33,23 +52,6 @@ npm start
 
 ```bash
 curl http://localhost:3000/
-```
-
-# Use API deployed in Railway.app
-
-```bash
-# Get all notes
-curl https://nota-server-production.up.railway.app \
--H "Accept: application/json"
-```
-
-```bash
-# Create a note
-curl https://nota-server-production.up.railway.app \
--X POST \
--H "content-type: application/json" \
--H "accept:application/json" \
--d '{"userId": "user-001","title": "My curl note","body": "new note added using curl"}'
 ```
 
 # API Endpoints
