@@ -1,7 +1,6 @@
 import koa from "koa";
 import koaBody from "koa-body";
 import { mwCatchAllError } from "./catch-all-error";
-import router from "./routes";
 import joiRouter from "./joi-routes";
 
 const PORT = process.env.PORT || 3000;
