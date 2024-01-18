@@ -42,13 +42,19 @@ curl https://nota-server-production.up.railway.app \
 npm install
 ```
 
-2. Start server
+2. Build server
+
+```bash
+npm run build
+```
+
+3. Start server
 
 ```bash
 npm start
 ```
 
-3. Check API
+4. Check API
 
 ```bash
 curl http://localhost:3000/
