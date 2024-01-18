@@ -22,18 +22,30 @@ router.param("noteId", async (id, ctx, next) => {
 router.route({
   method: "get",
   path: "/",
+  handler: async (ctx, next) => {
+    const start = Date.now();
+    await next();
+    const ms = Date.now() - start;
+    ctx.set("X-Response-Time", `${ms}ms`);
+    ctx.status = 200;
+  },
+});
+
+router.route({
+  method: "get",
+  path: "/notes",
   handler: [mwCatchAllJoiError, getAllNotes],
 });
 
 router.route({
   method: "get",
-  path: "/:noteId",
+  path: "/notes/:noteId",
   handler: [mwCatchAllJoiError, getNoteById],
 });
 
 router.route({
   method: "post",
-  path: "/",
+  path: "/notes",
   validate: {
     type: "json",
     body: JoiNote,
@@ -44,7 +56,7 @@ router.route({
 
 router.route({
   method: "put",
-  path: "/:noteId",
+  path: "/notes/:noteId",
   validate: {
     type: "json",
     body: JoiNote,
@@ -55,7 +67,7 @@ router.route({
 
 router.route({
   method: "delete",
-  path: "/:noteId",
+  path: "/notes/:noteId",
   handler: [mwCatchAllJoiError, deleteNote],
 });
 

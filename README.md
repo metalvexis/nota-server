@@ -21,7 +21,7 @@ curl https://nota-server-production.up.railway.app \
 
 ```bash
 # Create a note
-curl https://nota-server-production.up.railway.app \
+curl https://nota-server-production.up.railway.app/notes \
 -X POST \
 -H "content-type: application/json" \
 -H "accept:application/json" \

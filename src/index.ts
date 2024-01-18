@@ -7,6 +7,13 @@ const PORT = process.env.PORT || 3000;
 
 const app = new koa();
 
+app.use(async (ctx, next) => {
+  const start = Date.now();
+  await next();
+  const ms = Date.now() - start;
+  ctx.set("X-Response-Time", `${ms}ms`);
+});
+
 app.use(
   koaBody({
     jsonLimit: "1kb",

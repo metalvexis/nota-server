@@ -1,11 +1,11 @@
 ### Test Get all Notes
-GET http://localhost:3000/
+GET http://localhost:3000/notes
 
 ### Test get note by id 
-GET http://localhost:3000/nota_3d265a18bd07bba9
+GET http://localhost:3000/notes/nota_72127752a875f59a
 
 ### Test Create Note
-POST http://localhost:3000/
+POST http://localhost:3000/notes
 content-type: application/json
 
 {
@@ -15,7 +15,7 @@ content-type: application/json
 
 
 ### Test Update a note
-PUT http://localhost:3000/nota_7dca04512712b518 HTTP/1.1
+PUT http://localhost:3000/notes/nota_b07afd8fd728802a HTTP/1.1
 content-type: application/json
 
 {
@@ -26,11 +26,11 @@ content-type: application/json
 
 
 ### Test Delete a note
-DELETE http://localhost:3000/nota_7dca04512712b518
+DELETE http://localhost:3000/notes/nota_7dca04512712b518
 
 
 ### Test 404
-GET http://localhost:3000/api/test
+GET http://localhost:3000/notes
 
 
 
